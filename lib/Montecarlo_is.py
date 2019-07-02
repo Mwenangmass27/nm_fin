@@ -22,11 +22,11 @@ class Montecarlo_is:
 
 
      def __init__(self,s_on_k,maturity,sigma,mu,nmc):
-	    self.s_on_k=s_on_k
-	    self.maturity=maturity
-	    self.sigma=sigma
-	    self.mu=mu
-	    self.nmc=nmc
+         self.s_on_k=s_on_k
+         self.maturity=maturity
+         self.sigma=sigma
+         self.mu=mu
+         self.nmc=nmc
 
      def pricer_call(self):
           g=npr.normal(0,1,self.nmc)    

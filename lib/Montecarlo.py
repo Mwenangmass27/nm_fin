@@ -39,7 +39,7 @@ class Montecarlo:
 
      def pricer_put(self):
           g=npr.normal(0,1,self.nmc)
-      
+     
           s=self.s_on_k*np.exp((self.mu-self.sigma**2/2)*self.maturity+self.sigma*np.sqrt(self.maturity)*g)
           payoff= np.exp(-self.mu*self.maturity)*np.maximum(-s+1,0)
 
@@ -47,5 +47,4 @@ class Montecarlo:
           return mc_price_put
 
      def pricer_str(self):
-
           return self.pricer_put(self)+self.pricer_call(self)

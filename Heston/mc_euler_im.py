@@ -35,9 +35,8 @@ def mc_pricer_im(kappa,mu,theta,xi,rho,time_t,vol_init,spot_init,nmc,n,strike):
 			w=np.sqrt(1-rho**2)*g+rho*z
 		payoff_sum+=np.maximum(spot_path-strike,0)
 	option_price=(payoff_sum/nmc)*np.exp(-mu*time_t)
-
-	print(option_price)
-
+	return option_price
 
 
-mc_pricer_im(6.21,0.0319,0.019,0.61,-0.7,1,0.010201,100,10000,1000,100)
+
+#mc_pricer_im(6.21,0.0319,0.019,0.61,-0.7,1,0.010201,100,10000,1000,100)

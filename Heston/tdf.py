@@ -20,11 +20,15 @@ d=4*theta*kappa/xi**2
 val_mu=0.5*d-1
 i=complex(0,1)
 vu=vol_init**2
-vt=vu*1.17
+vt=vu*1.007
 eps=10**(-4)
 
 
-#fonction for the integral calculus
+xa=10**(-10)
+xb=0.03
+nh=1000
+
+
 def gamma(a):
 	return np.sqrt(kappa**2-2*xi**2*i*a)
 
@@ -45,45 +49,29 @@ def dist_func(x,vt,vu,a,b):
 		integrand=((1/x_vec)*np.exp(-x_vec*i*x)*char_func(x_vec,vt,vu)).imag
 		y.append(integrand)
 	return (-np.trapz(y,vec)/(math.pi)+0.5)
-xa=10**(-10)
-xb=0.03
 
+def dist_func_sum(xa,xb,n):
+	x_values=np.linspace(xa,xb,n,endpoint=True)
+	y=[]
+	pas_h=0.05
+	for x in x_values:
+		#pas_h=2*math.pi/x+0.00005
+		int_sum=pas_h*x/math.pi
+		j=1
+		y_arret=10
+		y_val=0
+		while(y_arret>=math.pi*eps*0.5):
+			y_val=char_func(pas_h*j,vt,vu).real
+			y_arret=y_val/j
+			int_sum+=y_val*(2/math.pi)*(1/j)*np.sin(pas_h*j*x)
+			j+=1
+		y.append(int_sum)
+	return x_values,y
 
-
-
-samples=[]
-vals=np.linspace(xa,xb,n)
-for xv in vals:
-	df=dist_func(xv,vt,vu,xa,xb)
-	samples.append(df)
-
-s=np.array(samples)
-plt.plot(vals,s)
+x_values,y=dist_func_sum(xa,xb,n)
+yp=np.array(y)
+plt.plot(x_values,yp)
 plt.show()
 
-'''
-x_np=np.linspace(xa,xb,n,endpoint=True)
 
-x=[]
-density=[]
-cumulative=[]
 
-min_support_x=10**-10
-
-for l_x in x_np:
-	l_density=density_func(l_x,l_x,vt,vu)
-	l_cumulative=dist_func(l_x,vt,vu,min_support_x,150)
-	x.append(l_x)
-	density.append(l_density)
-	cumulative.append(l_cumulative)
-	print(str(l_x)+ " "+str(l_density)+ " "+str(l_cumulative))
-	#input("prompt")
-
-#yy=np.array(yv)
-
-#plt.plot([x,x],[density,cumulative])
-
-#plt.plot(x,density)
-plt.plot(x,cumulative)
-plt.show()
-'''

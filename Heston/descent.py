@@ -12,9 +12,10 @@ def grad_descent(f,x0,tol,theta):
 	xprime=x0
 	xsec={0,0,0,0,0}
 	h=tol*100
+	nit=0
 	while(res>tol):
-		xsec=xprime-theta*grad_f(f,x0,h)
+		xsec=xprime-theta*grad_f(f,xprime,h)
 		res=np.linalg.norm(xsec-xprime)
 		xprime=xsec
-#		ninit+=1
+		nit+=1
 	return xprime

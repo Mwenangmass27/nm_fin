@@ -23,9 +23,9 @@ def sse_heston(market_prices,x):
 	x=[kappa,vol_init,theta,rho,xi]
 	sse=0
 	model_price=0
-	for j in range(market_prices.shape[0]):
-		model_price=mc_pricer_im(spot_init=market_prices.iloc[j,6],vol_init=vol_init,strike=100,time_t=market_prices.iloc[j,2],kappa=kappa,xi=xi,theta=theta,rho=rho,mu=market_prices.iloc[j,3],nmc=100,n=50)
-		sse+=(model_price-market_prices.iloc[j,-1])**2
+#	for j in range(market_prices.shape[0]):
+	model_price=mc_pricer_im(spot_init=market_prices.iloc[:,6],vol_init=vol_init,strike=100,time_t=market_prices.iloc[:,2],kappa=kappa,xi=xi,theta=theta,rho=rho,mu=market_prices.iloc[:,3],nmc=100,n=50)
+	sse+=(model_price-market_prices.iloc[:,-1])**2
 	return sse
 
 '''

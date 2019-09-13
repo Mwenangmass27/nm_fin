@@ -3,6 +3,7 @@ from scipy.stats import gamma
 import matplotlib.pyplot as plt
 import numpy.random as npr
 
+#génération de la densité d'une loi gamma
 
 fig, ax = plt.subplots(1, 1)
 

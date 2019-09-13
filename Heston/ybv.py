@@ -11,6 +11,9 @@ import matplotlib.pyplot as plt
 import numpy.random as npr
 import closedform as cf
 import scipy.integrate as integrate
+
+#code de génération d'un pont brownien
+
 int_law=10000
 h=1/1000
 samples=[]

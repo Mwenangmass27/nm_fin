@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 import numpy.random as npr
 
 
-
+#première version de l'algorithme full truncation modifiée dans le fichier fulltrvec
 
 def mc_pricer_fulltr(kappa,mu,theta,xi,rho,time_t,vol_init,spot_init,nmc,n,strike):
 #Montecarlo loop

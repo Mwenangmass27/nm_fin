@@ -9,6 +9,8 @@ from grad import grad_f
 from descent import grad_descent
 from sseh import sse_heston
 
+#résolution du problême de minimisation, pas fonctionnelle, à retravailler
+
 kappa=0.5 #6.21
 xi=0.61
 theta=0.019

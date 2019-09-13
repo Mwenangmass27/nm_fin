@@ -13,6 +13,9 @@ import math
 import scipy.integrate as integrate
 
 
+#méthode de pricing basée sur la formule d'inversion de Gil-Palaez
+#voir la doc pour plus d'explications
+
 i=complex(0,1)
 
 
